@@ -6,13 +6,15 @@ angular.module('crowdshipperApp', [
   'ngSanitize',
   'ngRoute'
 ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'partials/main',
         controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+      
+    $locationProvider.html5Mode(true);
   });
