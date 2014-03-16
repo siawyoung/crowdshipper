@@ -9,7 +9,7 @@ angular.module('crowdshipperApp', [
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/main',
+        templateUrl: 'partials/index',
         controller: 'MainCtrl'
       })
       .otherwise({
