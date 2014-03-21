@@ -1,6 +1,10 @@
 'use strict';
 
-var express = require('express');
+// Module dependencies
+
+var express = require('express'),
+	path = require('path'),
+	fs = require('fs');
 
 /**
  * Main application file
@@ -13,6 +17,18 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('./lib/config/config');
 
 var app = express();
+
+// Connect to Mongo (added by me)
+var db = require('./lib/db/mongo').db;
+
+// Mongoose Models
+var modelsPath = path.join(__dirname, 'lib/models');
+fs.readdirSync(modelsPath).forEach(function (file) {
+  require(modelsPath + '/' + file);
+});
+
+// Passport Strategy and Settings (added by me)
+var pass = require('./lib/config/pass');
 
 // Express settings
 require('./lib/config/express')(app);

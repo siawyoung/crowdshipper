@@ -9,14 +9,16 @@
 	<hr>
 </div>
 
-<fieldset>
-		<label for="email">Email: </label>
-			<input type="email" ng-model="email">
-		<label for="password">Password: </label>
-			<input type="password">
-		<br>
-		<button action="submit">Register / Log In</button>
-</fieldset>
+<form ng-controller='LoginController' ng-submit='registerOrLogIn()'>
+	<fieldset>
+			<label for="email">Email: </label>
+				<input type="email" ng-model="email">
+			<label for="password">Password: </label>
+				<input type="password">
+			<br>
+			<button action="submit">Register / Log In</button>
+	</fieldset>
+</form>
 
 <div class="row">
 	<h3>
