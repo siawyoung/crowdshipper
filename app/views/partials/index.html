@@ -9,15 +9,23 @@
 	<hr>
 </div>
 
-<form ng-controller='LoginController' ng-submit='registerOrLogIn()'>
-	<fieldset>
+<form ng-controller='RegisterController' class="form" name="form" ng-submit='register(form)'>
+	<div class="form-group">
 			<label for="email">Email: </label>
-				<input type="email" ng-model="email">
+				<input class="form-control" 
+				type="email" 
+				placeholder="Your Email" 
+				name="email" 
+				ng-model="user.email">
 			<label for="password">Password: </label>
-				<input type="password">
+				<input class="form-control" 
+				type="password" 
+				placeholder="Your Password"
+				name="password"
+				ng-model="user.password">
 			<br>
-			<button action="submit">Register / Log In</button>
-	</fieldset>
+			<button type="submit">Register / Log In</button>
+	</div>
 </form>
 
 <div class="row">

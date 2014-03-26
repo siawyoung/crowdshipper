@@ -1,6 +1,6 @@
 'use strict';
 
-// Module dependencies
+// Express is required. path and fs are required for recursive require-ing of Mongoose models in lib/models
 
 var express = require('express'),
 	path = require('path'),
@@ -19,16 +19,16 @@ var config = require('./lib/config/config');
 var app = express();
 
 // Connect to Mongo (added by me)
-var db = require('./lib/db/mongo').db;
+require('./lib/db/mongo').connect;
 
-// Mongoose Models
+// Set up Mongoose models (added by me)
 var modelsPath = path.join(__dirname, 'lib/models');
 fs.readdirSync(modelsPath).forEach(function (file) {
   require(modelsPath + '/' + file);
 });
 
 // Passport Strategy and Settings (added by me)
-var pass = require('./lib/config/pass');
+require('./lib/config/pass');
 
 // Express settings
 require('./lib/config/express')(app);

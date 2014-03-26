@@ -1,10 +1,7 @@
 'use strict';
 
 angular.module('crowdshipperApp')
-	.controller('LoginController', ['$scope', 'Auth', '$location', function ($scope, Auth, $location) {
-		// $http.get('/api/awesomeThings').success(function(awesomeThings) {
-		//   $scope.awesomeThings = awesomeThings;
-
+	.controller('IndexController', ['$scope', 'Auth', '$location', function($scope, Auth, $location){
 		$scope.register = function(form) {
 			Auth.createUser({
 				email: $scope.user.email,
