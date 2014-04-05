@@ -4,12 +4,12 @@
   <div class="row" ng-show="!currentUser">
     <form name="loginForm" ng-submit='login(loginForm)'>
       <div class="form-group">
-          <label for="email">Email: </label>
+          <label for="email">Username or Email: </label>
             <input class="form-control"
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            ng-model="existingUser.email">
+            type="text"
+            name="username"
+            placeholder="Your Username or Email"
+            ng-model="existingUser.username">
           <label for="password">Password: </label>
             <input class="form-control"
             type="password"

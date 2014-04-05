@@ -8,9 +8,14 @@ angular.module('crowdshipperApp')
 
 		return {
 
-			createUser: function(userinfo, callback) {
+			createUser: function(user, callback) {
 				var cb = callback || angular.noop;
-				$resource('/auth/users/register').save(userinfo, function(user) { // TODO: Abtracting $resource out to separate factory or use Restangular
+				$resource('/auth/users/register').save({
+					username: user.username,
+					email: user.email,
+					password: user.password
+				},
+				function(user) { // TODO: Abtracting $resource out to separate factory or use Restangular
 					$rootScope.currentUser = user;
 					return cb();
 				},
@@ -27,10 +32,9 @@ angular.module('crowdshipperApp')
 
 			addSession: function(user, callback) {
 				var cb = callback || angular.noop;
-				$resource('/auth/session/').save({
-					email:user.email,
-					password:user.password
-				}, function(user) {
+				$resource('/auth/session/').save(user
+					// {username:user.username, password:user.password}
+					, function(user) {
 					$rootScope.currentUser = user;
 					return cb();
 				}, function(err) {

@@ -5,7 +5,7 @@ angular.module('crowdshipperApp')
 
 		$scope.login = function(form) {
 			Auth.addSession({
-				email: $scope.existingUser.email,
+				username: $scope.existingUser.username,
 				password: $scope.existingUser.password
 			},
 			function(err) {
@@ -13,7 +13,7 @@ angular.module('crowdshipperApp')
 				if (!err) {
 					$location.path('/');
 				} else {
-					// To modify and hangle differently
+					// TODO Use Angular native form validation
 					angular.forEach(err.errors, function(error, field) {
 							form[field].$setValidity('mongoose', false);
 							$scope.errors[field] = error.type;
@@ -21,7 +21,7 @@ angular.module('crowdshipperApp')
 				}
 			});
 		};
-		
+
 		$scope.logout = function() {
 			Auth.removeSession(function(err) {
 				if (!err) {

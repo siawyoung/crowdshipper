@@ -10,15 +10,21 @@
 	<div class="form-group">
 			<label for="email">Email: </label>
 				<input class="form-control"
+				type="username"
+				name="username"
+				placeholder="Pick a Username"
+				ng-model="newUser.username">
+			<label for="email">Email: </label>
+				<input class="form-control"
 				type="email"
 				name="email"
-				placeholder="Your Email"
+				placeholder="Enter a valid email"
 				ng-model="newUser.email">
 			<label for="password">Password: </label>
 				<input class="form-control"
 				type="password"
 				name="password"
-				placeholder="Your Password"
+				placeholder="Choose a secure password"
 				ng-model="newUser.password">
 			<br>
 			<button type="submit">Register</button>
