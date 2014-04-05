@@ -4,7 +4,11 @@
   "dependencies": {
     "express": "~3.4.3",
     "lodash": "~2.4.1",
-    "ejs": "~0.8.4"
+    "ejs": "~0.8.4",
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0",
+    "mongoose": "~3.8.8",
+    "connect-mongo": "~0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -45,7 +49,7 @@
     "karma-requirejs": "~0.2.1",
     "karma-coffee-preprocessor": "~0.1.2",
     "karma-phantomjs-launcher": "~0.1.1",
-    "karma": "~0.10.9",
+    "karma": "~0.10.10",
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "grunt-mocha-test": "~0.8.1",
     "supertest": "~0.8.2",

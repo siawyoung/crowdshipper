@@ -15,6 +15,14 @@ angular.module('crowdshipperApp', [
         templateUrl: 'partials/index',
         controller: 'IndexController'
       })
+      // .when('/loggedin', {
+      //   templateUrl: 'partials/loggedin',
+      //   controller: 'IndexController'
+      // })
+      .when('/profile', {
+        templateUrl: 'partials/profile',
+        controller: 'IndexController'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -29,7 +37,7 @@ angular.module('crowdshipperApp', [
       // if no currentUser and on a page that requires authorization then try to update it
       // will trigger 401s if user does not have a valid session
       if (!currentUser && (['/', '/login', '/logout', '/signup'].indexOf($location.path()) === -1 )) {
-        Auth.currentUser();
+        Auth.checkSession();
       }
     });
 

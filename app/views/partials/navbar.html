@@ -1,3 +1,27 @@
-<div class="header">
+<div class="header" ng-controller="LogInOutController">
   <h3 class="text-muted">crowdshipper</h3>
+
+  <div class="row" ng-show="!currentUser">
+    <form name="loginForm" ng-submit='login(loginForm)'>
+      <div class="form-group">
+          <label for="email">Email: </label>
+            <input class="form-control"
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            ng-model="existingUser.email">
+          <label for="password">Password: </label>
+            <input class="form-control"
+            type="password"
+            name="password"
+            placeholder="Your Password"
+            ng-model="existingUser.password">
+          <br>
+          <button type="submit">Log In</button>
+      </div>
+    </form>
+  </div>
+
+  <h4 ng-show="currentUser"><a href="/" ng-click="logout()">Logout</a></h4>
+
 </div>
