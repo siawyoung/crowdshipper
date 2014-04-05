@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('crowdshipperApp')
-	.controller('LogInOutController', ['$scope', 'Auth', '$location', function($scope, Auth, $location) {
+	.controller('LogInOutController', ['$scope', 'Session', '$location', function($scope, Session, $location) {
 
 		$scope.login = function(form) {
-			Auth.addSession({
+			Session.add({
 				username: $scope.existingUser.username,
 				password: $scope.existingUser.password
 			},
-			function(err) {
+			function(err) { //TODO: Possibly abstracting this error callback function into its own factory
 				$scope.errors = {};
 				if (!err) {
-					$location.path('/');
+					$location.path('/' + $scope.existingUser.username);
 				} else {
 					// TODO Use Angular native form validation
 					angular.forEach(err.errors, function(error, field) {
@@ -23,7 +23,7 @@ angular.module('crowdshipperApp')
 		};
 
 		$scope.logout = function() {
-			Auth.removeSession(function(err) {
+			Session.remove(function(err) {
 				if (!err) {
 					$location.path('/');
 				}
