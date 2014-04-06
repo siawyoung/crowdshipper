@@ -1,0 +1,9 @@
+<div ng-show="currentUser">
+  <div ng-include="'partials/navbar'"></div>
+  <div ng-transclude></div>
+</div>
+
+<div ng-show="!currentUser">
+  <div ng-include="'partials/index'">
+  </div>
+</div>

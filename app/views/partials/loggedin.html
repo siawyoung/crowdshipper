@@ -1,9 +1,7 @@
-<div ng-include="'partials/navbar'"></div>
+<!-- user-check is a custom ng-show hack to prevent history snooping -->
 
-<h1>Welcome back, {{ currentUser.username }}</h1>
-
-
-<h4>Search on <a href="http://amazon.com">Amazon</a>.</h4>
-
-
-<h4><a href="#profile">Go to your profile!</a></h4>
+<user-check>
+  <h1>Welcome back, {{ currentUser.username }}</h1>
+  <h4>Search on <a href="http://amazon.com">Amazon</a>.</h4>
+  <h4><a ng-href="{{currentUser.username}}/profile">Go to your profile!</a></h4>
+</user-check>

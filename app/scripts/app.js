@@ -24,7 +24,7 @@ angular.module('crowdshipperApp', [
       //   templateUrl: 'partials/loggedin',
       //   controller: 'IndexController'
       // })
-      .when('/profile', {
+      .when('/:username/profile', {
         templateUrl: 'partials/profile',
         controller: 'IndexController'
       })
@@ -37,14 +37,12 @@ angular.module('crowdshipperApp', [
 
   .run(['$rootScope', '$location', 'Session', function ($rootScope, $location, Session) {
 
-    //watching the value of the currentUser variable.
+    //watching the value of the currentUser variable. If currentUser is not populated and user is on anywhere else but the front page, check session.
+    // If currentUser tries to go to the front page when logged in, it will redirect him to his home page.
+
     $rootScope.$watch('currentUser', function(currentUser) {
-      // if no currentUser and on a page that requires authorization then try to update it
-      // will trigger 401s if user does not have a valid session
-      // if (!currentUser && (['/', '/login', '/logout', '/signup'].indexOf($location.path()) === -1 )) {
-      //   Session.check();
-      // }
-      if (!currentUser) {
+
+      if (!currentUser && $location.path() !== '/') {
         Session.check();
       }
 
@@ -53,8 +51,10 @@ angular.module('crowdshipperApp', [
       }
     });
 
+
     // On catching 401 errors, redirect to the login page.
-    $rootScope.$on('event:auth-loginRequired', function() {
+    $rootScope.$on('event:auth-loginRequired', function(event) {
+      event.preventDefault();
       $location.path('/');
       return false;
     });
